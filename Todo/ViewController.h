@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *filterCompletedTodos;
+@property (weak, nonatomic) IBOutlet UIButton *clearCompletedTasksButton;
+@property (weak, nonatomic) IBOutlet UIButton *markAllCompleteButton;
 
 @end

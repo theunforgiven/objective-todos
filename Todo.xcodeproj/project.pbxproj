@@ -14,7 +14,6 @@
 		6EE2166A18BBA8AF00502962 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2166918BBA8AF00502962 /* main.m */; };
 		6EE2166E18BBA8AF00502962 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2166D18BBA8AF00502962 /* AppDelegate.m */; };
 		6EE2167118BBA8AF00502962 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EE2166F18BBA8AF00502962 /* Main_iPhone.storyboard */; };
-		6EE2167418BBA8AF00502962 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EE2167218BBA8AF00502962 /* Main_iPad.storyboard */; };
 		6EE2167718BBA8AF00502962 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2167618BBA8AF00502962 /* ViewController.m */; };
 		6EE2167918BBA8AF00502962 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE2167818BBA8AF00502962 /* Images.xcassets */; };
 		6EE2168018BBA8AF00502962 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE2167F18BBA8AF00502962 /* XCTest.framework */; };
@@ -22,6 +21,7 @@
 		6EE2168218BBA8AF00502962 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE2166118BBA8AF00502962 /* UIKit.framework */; };
 		6EE2168A18BBA8AF00502962 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6EE2168818BBA8AF00502962 /* InfoPlist.strings */; };
 		6EE2168C18BBA8AF00502962 /* TodoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2168B18BBA8AF00502962 /* TodoTests.m */; };
+		6EE2169718BD2EA500502962 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2169618BD2EA500502962 /* ToDo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 		6EE2166C18BBA8AF00502962 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6EE2166D18BBA8AF00502962 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6EE2167018BBA8AF00502962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		6EE2167318BBA8AF00502962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		6EE2167518BBA8AF00502962 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6EE2167618BBA8AF00502962 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6EE2167818BBA8AF00502962 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -55,6 +54,8 @@
 		6EE2168718BBA8AF00502962 /* TodoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TodoTests-Info.plist"; sourceTree = "<group>"; };
 		6EE2168918BBA8AF00502962 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6EE2168B18BBA8AF00502962 /* TodoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTests.m; sourceTree = "<group>"; };
+		6EE2169518BD2EA500502962 /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
+		6EE2169618BD2EA500502962 /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +118,12 @@
 				6EE2166C18BBA8AF00502962 /* AppDelegate.h */,
 				6EE2166D18BBA8AF00502962 /* AppDelegate.m */,
 				6EE2166F18BBA8AF00502962 /* Main_iPhone.storyboard */,
-				6EE2167218BBA8AF00502962 /* Main_iPad.storyboard */,
 				6EE2167518BBA8AF00502962 /* ViewController.h */,
 				6EE2167618BBA8AF00502962 /* ViewController.m */,
 				6EE2167818BBA8AF00502962 /* Images.xcassets */,
 				6EE2166418BBA8AF00502962 /* Supporting Files */,
+				6EE2169518BD2EA500502962 /* ToDo.h */,
+				6EE2169618BD2EA500502962 /* ToDo.m */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -231,7 +233,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EE2167418BBA8AF00502962 /* Main_iPad.storyboard in Resources */,
 				6EE2167918BBA8AF00502962 /* Images.xcassets in Resources */,
 				6EE2167118BBA8AF00502962 /* Main_iPhone.storyboard in Resources */,
 				6EE2166818BBA8AF00502962 /* InfoPlist.strings in Resources */,
@@ -256,6 +257,7 @@
 				6EE2167718BBA8AF00502962 /* ViewController.m in Sources */,
 				6EE2166E18BBA8AF00502962 /* AppDelegate.m in Sources */,
 				6EE2166A18BBA8AF00502962 /* main.m in Sources */,
+				6EE2169718BD2EA500502962 /* ToDo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,14 +294,6 @@
 				6EE2167018BBA8AF00502962 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		6EE2167218BBA8AF00502962 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6EE2167318BBA8AF00502962 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		6EE2168818BBA8AF00502962 /* InfoPlist.strings */ = {
@@ -474,6 +468,7 @@
 				6EE2169118BBA8AF00502962 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6EE2169218BBA8AF00502962 /* Build configuration list for PBXNativeTarget "TodoTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +477,7 @@
 				6EE2169418BBA8AF00502962 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

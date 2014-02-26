@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ToDo.h"
+#import "TodoCell.h"
 
 
 @implementation ViewController
@@ -96,11 +97,7 @@ BOOL filterRows;
     return count;
 }
 
-- (void)addGestureRecognizer:(UITableViewCell *)cell direction:(UISwipeGestureRecognizerDirection)direction action:(SEL)action {
-    UISwipeGestureRecognizer* sgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:action];
-    [sgr setDirection:direction];
-    [cell addGestureRecognizer:sgr];
-}
+
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
@@ -108,29 +105,21 @@ BOOL filterRows;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cellForRowAtIndexPath");
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    TodoCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[TodoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
 
     ToDo* todo = [[self filteredTodos] objectAtIndex:indexPath.row];
-    [self setTextForCellCell:cell todo:todo];
+    [cell setToDo:todo];
     [self addGestureRecognizer:cell direction:UISwipeGestureRecognizerDirectionRight action: @selector(cellMarkCompleteSwipe:)];
     [self addGestureRecognizer:cell direction:UISwipeGestureRecognizerDirectionLeft action: @selector(cellMarkIncompleteSwipe:)];
     return cell;
 }
-
-- (void)setTextForCellCell:(UITableViewCell *)cell todo:(ToDo *)todo {
-    NSString* cellText = todo.text;
-    NSLog(@"Cell text: [%@]", cellText);
-    cell.textLabel.text = cellText;
-    if (todo.completed) {
-        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:cellText];
-        [attributeString addAttribute:NSStrikethroughStyleAttributeName
-                                value:@2
-                                range:NSMakeRange(0, [attributeString length])];
-        cell.textLabel.attributedText = attributeString;
-    }
+- (void)addGestureRecognizer:(UITableViewCell *)cell direction:(UISwipeGestureRecognizerDirection)direction action:(SEL)action {
+    UISwipeGestureRecognizer* sgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:action];
+    [sgr setDirection:direction];
+    [cell addGestureRecognizer:sgr];
 }
 
 - (void)cellMarkCompleteSwipe:(UIGestureRecognizer *)gestureRecognizer {
@@ -141,12 +130,12 @@ BOOL filterRows;
 }
 - (void)setCellCompleted:(UIGestureRecognizer *)gestureRecognizer cellCompleted:(BOOL)completed {
     if(gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        UITableViewCell* cell = (UITableViewCell *)gestureRecognizer.view;
+        TodoCell* cell = (TodoCell *)gestureRecognizer.view;
         NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
         ToDo* todo = [[self filteredTodos] objectAtIndex:indexPath.row];
         NSLog(@"Todo Swiped: Complete? %d", (int)completed);
         todo.completed = completed;
-        [self setTextForCellCell:cell todo:todo];
+        [cell setToDo:todo];
     }
     [self reloadToDoData];
 }

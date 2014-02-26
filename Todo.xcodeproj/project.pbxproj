@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E7FF5EA18BE2C94003A4314 /* TodoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7FF5E918BE2C94003A4314 /* TodoCell.m */; };
 		6EE2165E18BBA8AF00502962 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE2165D18BBA8AF00502962 /* Foundation.framework */; };
 		6EE2166018BBA8AF00502962 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE2165F18BBA8AF00502962 /* CoreGraphics.framework */; };
 		6EE2166218BBA8AF00502962 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE2166118BBA8AF00502962 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E7FF5E818BE2C94003A4314 /* TodoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoCell.h; sourceTree = "<group>"; };
+		6E7FF5E918BE2C94003A4314 /* TodoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoCell.m; sourceTree = "<group>"; };
 		6EE2165A18BBA8AF00502962 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE2165D18BBA8AF00502962 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6EE2165F18BBA8AF00502962 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +121,8 @@
 				6EE2166C18BBA8AF00502962 /* AppDelegate.h */,
 				6EE2166D18BBA8AF00502962 /* AppDelegate.m */,
 				6EE2166F18BBA8AF00502962 /* Main_iPhone.storyboard */,
+				6E7FF5E818BE2C94003A4314 /* TodoCell.h */,
+				6E7FF5E918BE2C94003A4314 /* TodoCell.m */,
 				6EE2167518BBA8AF00502962 /* ViewController.h */,
 				6EE2167618BBA8AF00502962 /* ViewController.m */,
 				6EE2167818BBA8AF00502962 /* Images.xcassets */,
@@ -258,6 +263,7 @@
 				6EE2166E18BBA8AF00502962 /* AppDelegate.m in Sources */,
 				6EE2166A18BBA8AF00502962 /* main.m in Sources */,
 				6EE2169718BD2EA500502962 /* ToDo.m in Sources */,
+				6E7FF5EA18BE2C94003A4314 /* TodoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

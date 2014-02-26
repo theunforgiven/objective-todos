@@ -15,32 +15,34 @@
 
 NSMutableArray *toDos;
 BOOL filterRows;
-- (void)viewDidLoad
-{
+
+- (void)viewDidLoad {
     [super viewDidLoad];
+    [_clearCompletedTasksButton addTarget:self action:@selector(clearCompletedTasks) forControlEvents:UIControlEventTouchUpInside];
     [_filterCompletedTodos addTarget:self action:@selector(filterCompletedChanged:) forControlEvents:UIControlEventValueChanged];
-    [_clearCompletedTasksButton addTarget:self action:@selector(clearCompletedTasks)    forControlEvents:UIControlEventTouchUpInside];
-    [_markAllCompleteButton addTarget:self action:@selector(markAllToDosComplete)    forControlEvents:UIControlEventTouchUpInside];
+    [_markAllCompleteButton addTarget:self action:@selector(markAllToDosComplete) forControlEvents:UIControlEventTouchUpInside];
     toDos = [NSMutableArray arrayWithObjects:[[ToDo alloc] initWithText:@"This is a test"],
                                              [[ToDo alloc] initWithText:@"A different test"],
                                              [[ToDo alloc] initWithText:@"A FINAL TEST"],
                                              nil];
     filterRows = false;
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void) filterCompletedChanged:(UISegmentedControl*)control {
-    NSString* segment = [control titleForSegmentAtIndex:control.selectedSegmentIndex];
+- (void)filterCompletedChanged:(UISegmentedControl *)control {
+    NSString *segment = [control titleForSegmentAtIndex:control.selectedSegmentIndex];
     filterRows = [segment isEqualToString:@"Hide"];
     [self reloadToDoData];
-    NSLog(@"Filter completed changed %@ Filter Rows? %d", segment, (int)filterRows);
+    NSLog(@"Filter completed changed %@ Filter Rows? %d", segment, (int) filterRows);
 }
--(void)clearCompletedTasks {
+
+- (void)clearCompletedTasks {
     NSLog(@"Clearing completed tasks");
     NSPredicate *incompleteTodos = [NSPredicate predicateWithFormat:@"completed = false"];
     toDos = [NSMutableArray arrayWithArray:[toDos filteredArrayUsingPredicate:incompleteTodos]];
     [self reloadToDoData];
 }
+
 - (void)markAllToDosComplete {
     for (ToDo *todo in toDos) {
         todo.completed = true;
@@ -48,25 +50,24 @@ BOOL filterRows;
     [self reloadToDoData];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 // This method is called once we click inside the textField
--(void)textFieldDidBeginEditing:(UITextField *)textField{
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
     NSLog(@"Text field did begin editing");
 }
 
 // This method is called once we complete editing
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    [self addToDo: textField.text];
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self addToDo:textField.text];
     textField.text = @"";
     NSLog(@"Text field ended editing");
 }
 
--(void) addToDo:(NSString*)toDoText{
+- (void)addToDo:(NSString *)toDoText {
     NSLog(@"Adding ToDo with text:[%@]", toDoText);
     [toDos addObject:[[ToDo alloc] initWithText:toDoText]];
     [self reloadToDoData];
@@ -78,12 +79,12 @@ BOOL filterRows;
 }
 
 // This method enables or disables the processing of return key
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }
 
-- (NSArray*) filteredTodos {
+- (NSArray *)filteredTodos {
     if (filterRows) {
         NSPredicate *incompleteTodos = [NSPredicate predicateWithFormat:@"completed = false"];
         return [toDos filteredArrayUsingPredicate:incompleteTodos];
@@ -110,33 +111,36 @@ BOOL filterRows;
         cell = [[TodoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
 
-    ToDo* todo = [[self filteredTodos] objectAtIndex:indexPath.row];
+    ToDo *todo = [[self filteredTodos] objectAtIndex:indexPath.row];
     [cell setToDo:todo];
-    [self addGestureRecognizer:cell direction:UISwipeGestureRecognizerDirectionRight action: @selector(cellMarkCompleteSwipe:)];
-    [self addGestureRecognizer:cell direction:UISwipeGestureRecognizerDirectionLeft action: @selector(cellMarkIncompleteSwipe:)];
+    [self addGestureRecognizer:cell direction:UISwipeGestureRecognizerDirectionRight action:@selector(cellMarkCompleteSwipe:)];
+    [self addGestureRecognizer:cell direction:UISwipeGestureRecognizerDirectionLeft action:@selector(cellMarkIncompleteSwipe:)];
     return cell;
 }
+
 - (void)addGestureRecognizer:(UITableViewCell *)cell direction:(UISwipeGestureRecognizerDirection)direction action:(SEL)action {
-    UISwipeGestureRecognizer* sgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:action];
+    UISwipeGestureRecognizer *sgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:action];
     [sgr setDirection:direction];
     [cell addGestureRecognizer:sgr];
 }
 
 - (void)cellMarkCompleteSwipe:(UIGestureRecognizer *)gestureRecognizer {
-    [self setCellCompleted:gestureRecognizer cellCompleted: YES];
+    [self setCellCompleted:gestureRecognizer cellCompleted:YES];
 }
+
 - (void)cellMarkIncompleteSwipe:(UIGestureRecognizer *)gestureRecognizer {
-    [self setCellCompleted:gestureRecognizer cellCompleted: NO];
+    [self setCellCompleted:gestureRecognizer cellCompleted:NO];
 }
+
 - (void)setCellCompleted:(UIGestureRecognizer *)gestureRecognizer cellCompleted:(BOOL)completed {
-    if(gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        TodoCell* cell = (TodoCell *)gestureRecognizer.view;
-        NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
-        ToDo* todo = [[self filteredTodos] objectAtIndex:indexPath.row];
-        NSLog(@"Todo Swiped: Complete? %d", (int)completed);
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        TodoCell *cell = (TodoCell *) gestureRecognizer.view;
+        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+        ToDo *todo = [[self filteredTodos] objectAtIndex:indexPath.row];
+        NSLog(@"Todo Swiped: Complete? %d", (int) completed);
         todo.completed = completed;
         [cell setToDo:todo];
+        [self reloadToDoData];
     }
-    [self reloadToDoData];
 }
 @end

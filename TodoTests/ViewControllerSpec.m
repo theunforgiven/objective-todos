@@ -1,12 +1,12 @@
 #import "Kiwi.h"
+#import "ViewController.h"
 
-SPEC_BEGIN(MathSpec)
+SPEC_BEGIN(ViewControllerSpec)
 
-describe(@"Math", ^{
-    it(@"is pretty cool", ^{
-        NSUInteger a = 16;
-        NSUInteger b = 26;
-        [[theValue(a + b) should] equal:theValue(42)];
+describe(@"View Controller", ^{
+    it(@"should have a mutable array of ToDos", ^{
+        ViewController* controller = [[ViewController alloc] init];
+        [[theValue(controller) shouldNot] equal:theValue(Nil)];
     });
 });
 
